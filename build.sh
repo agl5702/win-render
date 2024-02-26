@@ -5,4 +5,6 @@ set -o errexit
 pip install -r requirements.txt
 
 python manage.py collectstatic --no-input
+python manage.py createsuperuser --noinput --username adminwinadmin --email admin@example.com 
+
 python manage.py migrate
