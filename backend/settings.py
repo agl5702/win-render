@@ -54,7 +54,6 @@ INSTALLED_APPS = [
     'tabla_posiciones',
     'equipo_jugador',
     'partidos_horario',
-    'users'
 ]
 
 
@@ -130,7 +129,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-AUTH_USER_MODEL = 'users.User'
 
 
 # Internationalization
