@@ -53,10 +53,7 @@ INSTALLED_APPS = [
     'tabla_posiciones',
     'equipo_jugador',
     'partidos_horario',
-<<<<<<< HEAD
     'users'
-=======
->>>>>>> 0d6c3cac974086b0c22aab65866da3557ddd972b
 ]
 
 
@@ -131,11 +128,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-<<<<<<< HEAD
-AUTH_USER_MODEL = "users.User"
-=======
 
->>>>>>> 0d6c3cac974086b0c22aab65866da3557ddd972b
+AUTH_USER_MODEL = "users.User"
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
