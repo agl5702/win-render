@@ -2,11 +2,12 @@ from django.db import models
 from torneos.models import Torneo
 from django.conf import settings
 from django.contrib.auth import get_user_model
+User = get_user_model()
 
 
 # Create your models here.
 class Equipo(models.Model):
-    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,default=get_user_model)
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,default=default=User.objects.get_default_user)
     nombre= models.CharField(max_length=45)
     logo= models.ImageField(upload_to='equipo_jugador/media/equipo',blank=True,null=True)
     torneo_equipo=models.ForeignKey(Torneo, on_delete=models.CASCADE,default=1)
@@ -32,7 +33,7 @@ class Equipo(models.Model):
 
 class Jugador(models.Model):
 
-    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,default=get_user_model)
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,default=User.objects.get_default_user)
     id_jugador= models.IntegerField(primary_key=True)
     jugador_equipo= models.ManyToManyField(Equipo, related_name='jugadores') 
     nombre= models.CharField(max_length=45)
@@ -57,7 +58,7 @@ class Jugador(models.Model):
         return f'Nombre: {self.nombre} {self.jugador_equipo}'
 
 class Equipo_torneo(models.Model):
-    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,default=get_user_model)
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,default=User.objects.get_default_user)
     equipo= models.ForeignKey(Equipo, on_delete=models.CASCADE)
 
     def get_context_data(self, **kwargs):
