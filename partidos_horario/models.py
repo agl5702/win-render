@@ -1,7 +1,5 @@
 from django.db import models
 from equipo_jugador.models import Equipo
-from django.conf import settings
-from users.models import UserManager
 from users.models import User
 # Create your models here.
 
