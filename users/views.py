@@ -5,7 +5,6 @@ from django.contrib.auth import authenticate
 from rest_framework_simplejwt.views import TokenObtainPairView
 from users.api.serializers import CustomTokenObtainPairSerializer,CustomUserSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
-from users.models import User
 from rest_framework.permissions import IsAuthenticated
 # Create your views here.
 class Login(TokenObtainPairView):
