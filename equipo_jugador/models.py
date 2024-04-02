@@ -1,10 +1,11 @@
 from django.db import models
 from torneos.models import Torneo
 from django.contrib.auth import get_user_model
-
+UserModel = get_user_model()
+user = UserModel.objects.get(pk=id)
 # Create your models here.
 class Equipo(models.Model):
-    usuario = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    usuario = models.ForeignKey(user, on_delete=models.CASCADE)
     nombre= models.CharField(max_length=45)
     logo= models.ImageField(upload_to='equipo_jugador/media/equipo',blank=True,null=True)
     torneo_equipo=models.ForeignKey(Torneo, on_delete=models.CASCADE,default=1)

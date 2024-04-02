@@ -7,13 +7,16 @@ from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.contrib.auth import get_user_model
 
+
+UserModel = get_user_model()
+user = UserModel.objects.get(pk=id)
 # modelo
 class Torneo(models.Model):
     
     titulo= models.CharField(max_length=200)
     descripcion= models.TextField()
     fecha_inicio= models.DateField(auto_now_add=True)
-    usuario = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    usuario = models.ForeignKey(user, on_delete=models.CASCADE)
 
     def get_context_data(self, **kwargs):
         # Llama al método de la clase base para obtener el contexto inicial
