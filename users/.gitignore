@@ -1,0 +1,9 @@
+node_modules
+Win
+db.sqlite3
+comandos.txt
+__pycache__
+env
+migrations
+package-lock.json
+package.json
