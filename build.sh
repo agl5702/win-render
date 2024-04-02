@@ -12,7 +12,7 @@ python manage.py makemigrations partidos_horario
 python manage.py makemigrations tabla_posiciones
 python manage.py migrate
 
-python manage.py shell -c "from django.contrib.auth.models import User; User.objects.create_superuser('tenshidesu12345@gmail.com', '', 'agl57022023')"
+#python manage.py shell -c "from django.contrib.auth.models import User; User.objects.create_superuser('tenshidesu12345@gmail.com', '', 'agl57022023')"
 
 
 
