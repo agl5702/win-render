@@ -5,7 +5,6 @@ from django.conf import settings
 from django.db import models
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
-from users.models import UserManager
 from users.models import User
 
 
@@ -15,7 +14,7 @@ class Torneo(models.Model):
     titulo= models.CharField(max_length=200)
     descripcion= models.TextField()
     fecha_inicio= models.DateField(auto_now_add=True)
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE,default=User.objects.get_default_user)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def get_context_data(self, **kwargs):
         # Llama al método de la clase base para obtener el contexto inicial

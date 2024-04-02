@@ -7,7 +7,7 @@ from users.models import User
 
 
 class Partido(models.Model):
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE,default=User.objects.get_default_user)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     equipo_local = models.ManyToManyField(Equipo, related_name='equipos_locales')
     equipo_visitante = models.ManyToManyField(Equipo, related_name='equipos_visitantes')
 
