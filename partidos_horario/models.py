@@ -3,14 +3,13 @@ from equipo_jugador.models import Equipo
 from django.conf import settings
 from django.contrib.auth import get_user_model
 UserModel = get_user_model()
-user = UserModel.objects.get(pk=id)
 # Create your models here.
 
 
 
 
 class Partido(models.Model):
-    usuario = models.ForeignKey(user, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(UserModel, on_delete=models.CASCADE)
     equipo_local = models.ManyToManyField(Equipo, related_name='equipos_locales')
     equipo_visitante = models.ManyToManyField(Equipo, related_name='equipos_visitantes')
 
