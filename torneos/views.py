@@ -7,9 +7,7 @@ class TorneoView(viewsets.ModelViewSet):
     serializer_class = TorneoSerializer
     permission_classes = (IsAuthenticated,)
     queryset = Torneo.objects.all()
-    filter_backends = (filters.SearchFilter, filters.OrderingFilter)
-    search_fields = ('user__username',)  # Filtrar por nombre de usuario
-    ordering_fields = ('id',)  # Ordenar por fecha u otro campo
+   
 
     
     
