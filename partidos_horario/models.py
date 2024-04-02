@@ -9,7 +9,7 @@ from django.contrib.auth import get_user_model
 
 
 class Partido(models.Model):
-    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,default=get_user_model().objects.get_default_user)
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,default=get_user_model)
     equipo_local = models.ManyToManyField(Equipo, related_name='equipos_locales')
     equipo_visitante = models.ManyToManyField(Equipo, related_name='equipos_visitantes')
 

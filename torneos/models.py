@@ -13,7 +13,7 @@ class Torneo(models.Model):
     titulo= models.CharField(max_length=200)
     descripcion= models.TextField()
     fecha_inicio= models.DateField(auto_now_add=True)
-    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,default=get_user_model().objects.get_default_user)
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,default=get_user_model)
 
     def get_context_data(self, **kwargs):
         # Llama al método de la clase base para obtener el contexto inicial
