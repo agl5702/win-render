@@ -7,7 +7,7 @@ User = get_user_model()
 
 # Create your models here.
 class Equipo(models.Model):
-    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,default=default=User.objects.get_default_user)
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,default=User.objects.get_default_user)
     nombre= models.CharField(max_length=45)
     logo= models.ImageField(upload_to='equipo_jugador/media/equipo',blank=True,null=True)
     torneo_equipo=models.ForeignKey(Torneo, on_delete=models.CASCADE,default=1)
