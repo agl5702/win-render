@@ -9,3 +9,10 @@ class TorneoSerializer(serializers.ModelSerializer):
         model= Torneo
         fields = '__all__'
 
+    def create(self, validated_data):
+        # Obtener el usuario autenticado
+        usuario = self.context['request'].user
+        # Asignar automáticamente el usuario al crear un nuevo torneo
+        validated_data['usuario'] = usuario
+        # Crear y devolver el objeto Torneo
+        return Torneo.objects.create(**validated_data)

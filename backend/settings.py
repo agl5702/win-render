@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+from datetime import timedelta
 from pathlib import Path
 
 import os 
@@ -28,6 +29,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
+
+# TOKEN_EXPIRED_AFTER_SECONDS=60
 
 ALLOWED_HOSTS = ['*']
 
@@ -49,11 +52,15 @@ INSTALLED_APPS = [
      #modeulo instalado para la comunicacion de los servers
     'corsheaders',
     'rest_framework',#api 
+    'rest_framework.authtoken',
+    'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
     'coreapi', #documentacion
     'torneos',
     'tabla_posiciones',
     'equipo_jugador',
     'partidos_horario',
+    'users',
 ]
 
 
@@ -165,7 +172,21 @@ CORS_ALLOWED_ORIGINS = ["http://localhost:5173",'http://192.168.0.1']
 REST_FRAMEWORK = {
     
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES':(
+        'rest_framework.permissions.IsAuthenticated',
+    )
 
 }
 
+AUTH_USER_MODEL= 'users.User'
+
+SIMPLE_JWT={
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=1),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS':True,
+    'BLACKLIST_AFTER_ROTATION': True
+}
 
